@@ -1,4 +1,12 @@
-const API_URL = "http://localhost:8000/v1";
+const dotenv = require("dotenv");
+dotenv.config();
+
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://the-nasa-project-production.up.railway.app/v1"
+    : `http://localhost:${process.env.PORT}/v1`;
+
+console.log(API_URL, process.env.NODE_ENV);
 async function httpGetPlanets() {
   const res = await fetch(`${API_URL}/planets`);
   const planets = await res.json();

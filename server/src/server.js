@@ -1,7 +1,11 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const http = require("http");
 const { app } = require("./app");
 const { loadLaunchData } = require("./models/launches.model");
 const loadDatabase = require("./services/mongo");
+
 const PORT = process.env.PORT || 8000;
 const server = http.createServer(app);
 

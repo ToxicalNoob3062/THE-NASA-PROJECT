@@ -12,7 +12,10 @@ const app = express();
 //middlewares
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin:
+      process.env.NODE_ENV == "production"
+        ? "https://the-nasa-project-production.up.railway.app"
+        : `http://localhost:3000`,
   })
 );
 app.use(morgan("combined"));
